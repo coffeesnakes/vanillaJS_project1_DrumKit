@@ -76,6 +76,13 @@
     key.classList.add('playing'); // adds a class to each keystroke when pressed so the css styling effects it and places the yellow border around the pressed key and slightly enlarges, this is all done in styles.css
   };
 
+    function removeTransition(event) {
+      if (event.propertyName !== 'transform') return;
+
+      this.classList.remove('playing')
+    }
+    const keys = document.querySelectorAll('.key');
+    keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 
   window.addEventListener('keydown', playSound);
 </script>
